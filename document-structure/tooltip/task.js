@@ -1,7 +1,7 @@
 let tooltip = document.createElement('div');
-tooltip.classList.add("tooltip");
+tooltip.classList.add('tooltip');
 
-linksTooltip = Array.from(document.getElementsByClassName("has-tooltip"));
+linksTooltip = Array.from(document.getElementsByClassName('has-tooltip'));
 
 function showTooltip() {
     let tooltipText = this.title;
