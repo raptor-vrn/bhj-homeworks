@@ -5,7 +5,6 @@ let taskControl = document.querySelector('.tasks__control');
 function addTask(event) {
     let taskHTML = document.createElement('div');
 
-    if (event.code == 'Enter') {
         event.preventDefault();
 
         if (Array.from(tasksInput.value).length > 2) {
@@ -26,8 +25,6 @@ function addTask(event) {
 
             tasksInput.value = '';
         }
-
-    }
 }
 
-taskControl.addEventListener('keydown', addTask);
+taskControl.addEventListener('submit', addTask);
