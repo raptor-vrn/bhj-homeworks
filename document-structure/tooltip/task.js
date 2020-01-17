@@ -5,10 +5,9 @@ const linksTooltip = document.querySelectorAll('.has-tooltip');
 const addElement = (parent) => {
     let tooltip = document.createElement('div');
     let coordinates = parent.getBoundingClientRect();
-    let tooltipText = parent.title;
 
     tooltip.classList.add('tooltip');
-    tooltip.innerText = tooltipText;
+    tooltip.innerText = parent.title;
 
     tooltip.style.left = `${coordinates.x}px`;
     tooltip.style.top = `${coordinates.y + 20}px`;
@@ -16,7 +15,7 @@ const addElement = (parent) => {
     return tooltip;
 };
 
-function showTooltip() {
+function showTooltip(event) {
     event.preventDefault();
     this.appendChild(addElement(this));
 
