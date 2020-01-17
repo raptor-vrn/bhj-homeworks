@@ -1,29 +1,35 @@
-let tooltip = document.createElement('div');
-tooltip.classList.add('tooltip');
+'use strict';
 
-linksTooltip = Array.from(document.getElementsByClassName('has-tooltip'));
+const linksTooltip = document.querySelectorAll('.has-tooltip');
 
-function showTooltip() {
-    let tooltipText = this.title;
-    event.preventDefault();
+const addElement = (parent) => {
+    let tooltip = document.createElement('div');
+    let coordinates = parent.getBoundingClientRect();
+    let tooltipText = parent.title;
 
-    const linksActive = document.querySelector('.tooltip_active');
-
-    if (linksActive) {
-        tooltip.classList.add('menu_active');
-        tooltip.classList.remove('tooltip_active');
-        return
-    }
-
+    tooltip.classList.add('tooltip');
     tooltip.innerText = tooltipText;
 
-    let coordinates = this.getBoundingClientRect();
     tooltip.style.left = `${coordinates.x}px`;
     tooltip.style.top = `${coordinates.y + 20}px`;
 
-    tooltip.classList.toggle('tooltip_active');
+    return tooltip;
+};
 
-    this.appendChild(tooltip);
+function showTooltip() {
+    event.preventDefault();
+    this.appendChild(addElement(this));
+
+    const activeLink = document.querySelector('.tooltip_active');
+
+    if (activeLink) {
+        this.querySelector('.tooltip').classList.add('tooltip_active');
+        activeLink.classList.remove('tooltip_active');
+        return;
+    }
+
+    this.querySelector('.tooltip').classList.toggle('tooltip_active');
+
 }
 
 for (let link of linksTooltip) {
