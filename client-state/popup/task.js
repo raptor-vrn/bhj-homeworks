@@ -7,9 +7,9 @@ function funonload() {
 
     closeBtns.addEventListener('click', function () {
         modal.classList.remove('modal_active');
+        document.cookie = "modal=hidden";
     });
-
-    document.cookie = "modal=hidden";
+    
 }
 
 const getCookie = (name) => {
